@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+    @import "compass/css3";
+
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      font-weight:400;
+      padding: 0;
+      margin: 0;
+      color:#53626E;
+    }
+
+    .anuj {
+      width: 300px;
+      height: auto;
+      position:absolute;
+      left:50%;
+      top:50%;
+      margin: -200px 0 0 -150px;
+      border:#bfccd6 3px solid;
+      padding: 20px 40px 40px 40px;
+      box-sizing:border-box;
+      border-radius:4px;
+      background-color:#FFF;
+    }
+
+    h1 {
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input[type="radio"] {
+      margin-right: 10px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    button[type="submit"] {
+      margin:20px 0 0 0;
+      background-color:#53626E;
+      color:#FFF;
+      border:0;
+      width:100%; height: 40px;
+      font-size:10pt;
+      border-radius:4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+    background: linear-gradient(to right bottom, #fbdb89, #f48982);
+      transition: all 0.3s ease;
+    }
+    .ter{
+      background: linear-gradient(to right bottom, #fbdb89, #f48982);
+      height: 100vh;
+      width: 100%;
+      position: relative;
+    }
+    .munjal{
+      position: absolute;
+      bottom: 0;
+      left: 300px;
+      /* height: 300px; */
+    }
+    .anujd{
+      position: absolute;
+      bottom: 0;
+      right: 300px;
+    }
+    img{
+      height: 550px;
+    }
+   .esse{
+     margin-top: 0;
+     padding-top: 20px;
+     font-size: 50px;
+     color: black;
+   }
+   @media screen and (max-width: 1000px) {
+     .esse{
+       margin-top: 0;
+       padding-top: 100px;
+       /* padding-right: 300px; */
+       font-size: 100px;
+       position: relative;
+
+       /* color: black; */
+     }
+     .ter{
+
+           padding-right: 650px;
+           padding-bottom: 900px;
+           margin-bottom: 0;
+           margin-right: 0;
+           /* margin-bottom: 100px; */
+     }
+     .munjal{
+
+       position: relative;
+       top: 550px;
+       left: 200px;
+       right: 100px;
+     }
+     body{
+       margin: 0;
+       padding: 0;
+     }
+     .anujd{
+       position: relative;
+       top: 0px;
+       left: 600px;
+     }
+     .anuj{
+       position: relative;
+       top: 300px;
+     }
+
+
+     }
+    </style>
+  </head>
+  <body>
+    <div class="ter">
+      <h1 class="esse"><b>Choose your candidate option wisely!!</b></h1>
+      <div class="anuj">
+        <h1><%= question %></h1>
+        <form action="submitkaro" method="post">
+          <% for (let i = 0; i < result.length; i++) { %>
+            <label>
+              <input type="radio" name="option" value="<%= result[i]._id %>" id="option<%= i %>">
+              <%= result[i].choice %>
+            </label>
+          <% } %>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+      <div class="munjal">
+        <img src="images/bhai.png"class="ant" alt="">
+      </div>
+      <div class="anujd">
+        <img src="images/votew.png"class="man" alt="">
+      </div>
+    </div>
+
+  </body>
+</html>

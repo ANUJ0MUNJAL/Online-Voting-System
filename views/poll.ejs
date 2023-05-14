@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+
+        .container {
+        width: 400px;
+        margin: auto;
+        padding: 36px 48px 48px 48px;
+        background-color: #f2efee;
+
+        border-radius: 11px;
+        box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.15);
+      }
+
+      .login-title {
+        padding: 15px;
+        font-size: 22px;
+        font-weight: 600;
+        text-align: center;
+      }
+
+      .login-form {
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 16px;
+      }
+
+      .login-form label {
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .login-form input {
+        width: 100%;
+        padding: 1.2rem;
+        border-radius: 9px;
+        border: none;
+      }
+
+      .login-form input:focus {
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(253, 242, 233, 0.5);
+      }
+
+      .btn--form {
+        background-color: #f48982;
+        color: #fdf2e9;
+        align-self: end;
+        padding: 8px;
+      }
+
+      .btn,
+      .btn:link,
+      .btn:visited {
+        display: inline-block;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 600;
+        border-radius: 9px;
+        border: none;
+
+        cursor: pointer;
+        font-family: inherit;
+
+        transition: all 0.3s;
+      }
+
+      button {
+        outline: 1px solid #f48982;
+      }
+
+      .btn--form:hover {
+        background-color: #fdf2e9;
+        color: #f48982;
+      }
+      .anuj{
+        position: relative;
+        background:linear-gradient(to right bottom, #fbdb89, #f48982);
+        padding-top: 5rem;
+        padding-bottom: 5.85rem;
+      }
+      .hard{
+              bottom: 0;
+               right: 175px;
+              position: absolute;
+      }
+      @media screen and (max-width: 900px) {
+          .anuj{
+            position: relative;
+          }
+          .container{
+                width: 19rem;
+          }
+          .hard{
+            position: static;
+            margin-top: 30px;
+          }
+
+        }
+      </style>
+
+</head>
+<body>
+
+
+<div class="anuj">
+
+    <div class="container">
+
+        <h2 class="login-title">Create Poll</h2>
+
+        <form action="/create_poll" method="POST"class="login-form">
+          <div>
+            <label >Timer:- </label>
+            <input type="number" name="time" placeholder="Enter time in minutes" required>
+          </div>
+
+          <div>
+            <label for="password">What's the question </label>
+            <input type="text" name="question" placeholder="Enter your question" required>
+          </div>
+           <div>
+            <label for="">Options:-</label>
+            <input type="number" id="num_labels" name="num_labels" min="2" required>
+            <button type="button"class="btn btn-lg btn-block btn-outline-dark" name="anuj" onclick="createLabels()">Create Labels</button>
+
+            <div id="label_container"></div>
+           </div>
+           <input type="submit" class="btn btn-lg btn-block btn-outline-dark"value="Create Poll">
+
+
+        </form>
+      </div>
+      <div class="hard">
+        <img src="images/bohot.png" alt="">
+      </div>
+      </div>
+      </body>
+      <script>
+            function createLabels() {
+              const numLabels = document.getElementById('num_labels').value;
+              const container = document.getElementById('label_container');
+              container.innerHTML = '';
+
+              for (let i = 1; i <= numLabels; i++) {
+                const label = document.createElement('label');
+                label.setAttribute('for', 'label_' + i);
+                label.innerText = 'Label ' + i + ': ';
+
+                const input = document.createElement('input');
+                input.setAttribute('type', 'text');
+                input.setAttribute('id', 'label_' + i);
+                input.setAttribute('name', 'label_' + i);
+                input.setAttribute('required', '');
+
+                container.appendChild(label);
+                container.appendChild(input);
+                container.appendChild(document.createElement('br'));
+              }
+            }
+      </script>
+</html>
